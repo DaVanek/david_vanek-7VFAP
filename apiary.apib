@@ -1,0 +1,49 @@
+FORMAT: 1A
+HOST: http://api.example.com/
+
+# User Service
+
+## Login [POST /login]
++ Request (application/json)
+    + Attributes (object)
+        + username: `admin` (string, required)
+        + password: `admin123` (string, required)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + token: `fake-jwt-token` (string, required)
+
+## Users Collection [GET /users]
++ Response 200 (application/json)
+    + Attributes (array)
+        + (object)
+            + id: 1 (number)
+            + name: `John Doe` (string)
+            + email: `john@example.com` (string)
+
+## Create User [POST /users]
++ Request (application/json)
+    + Attributes (object)
+        + name: `Jane Doe` (string, required)
+        + email: `jane@example.com` (string, required)
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + id: 2 (number)
+        + name: `Jane Doe` (string)
+        + email: `jane@example.com` (string)
+
+## Update User [PUT /users/{id}]
++ Request (application/json)
+    + Attributes (object)
+        + name: `Jane Roe` (string, optional)
+        + email: `janeR@example.com` (string, optional)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + id: 2 (number)
+        + name: `Jane Roe` (string)
+        + email: `janeR@example.com` (string)
+
+## Delete User [DELETE /users/{id}]
++ Response 204
